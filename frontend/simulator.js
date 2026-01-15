@@ -7,9 +7,8 @@
 // CONFIGURATION
 // ============================================
 
-// 🔴 IMPORTANT: Replace with your Render backend URL after deployment
-const API_BASE_URL = 'https://YOUR-RENDER-APP-NAME.onrender.com';
-// For local development, use: 'http://localhost:3005'
+// Backend API URL (Render deployment)
+const API_BASE_URL = 'https://ai-biodiversity-sundarbans.onrender.com';
 
 
 const DEFAULT_VALUES = {
