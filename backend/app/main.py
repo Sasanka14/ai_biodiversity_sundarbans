@@ -5,11 +5,17 @@ import joblib
 import os
 from pathlib import Path
 import warnings
+import sys
 
 # Suppress sklearn version warnings
 warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-from app.schemas import SimulationInput, SimulationOutput
+# Import schemas with error handling
+try:
+    from app.schemas import SimulationInput, SimulationOutput
+except ImportError:
+    from schemas import SimulationInput, SimulationOutput
 
 
 app = FastAPI(title="Sundarbans Biodiversity Simulator")
@@ -24,16 +30,22 @@ app.add_middleware(
 # Load model - handle both local and production paths
 def load_model():
     # Try multiple possible paths
+    current_dir = Path(__file__).resolve().parent
     possible_paths = [
-        Path(__file__).resolve().parent.parent.parent / "models" / "biodiversity_model.pkl",  # Local dev
-        Path(__file__).resolve().parent.parent / "models" / "biodiversity_model.pkl",  # Backend relative
-        Path("/app/models/biodiversity_model.pkl"),  # Railway absolute
-        Path("/app/backend/models/biodiversity_model.pkl"),  # Railway with backend
+        current_dir.parent / "models" / "biodiversity_model.pkl",  # backend/models/
+        current_dir.parent.parent / "models" / "biodiversity_model.pkl",  # root/models/
+        Path("models/biodiversity_model.pkl"),  # relative
+        Path("../models/biodiversity_model.pkl"),  # up one level
     ]
     
+    print(f"Current file: {__file__}")
+    print(f"Current dir: {current_dir}")
+    print(f"Working dir: {os.getcwd()}")
+    
     for path in possible_paths:
+        print(f"Trying path: {path} - exists: {path.exists()}")
         if path.exists():
-            print(f"Loading model from: {path}")
+            print(f"✓ Loading model from: {path}")
             return joblib.load(path)
     
     raise FileNotFoundError(f"Model not found. Tried: {[str(p) for p in possible_paths]}")
