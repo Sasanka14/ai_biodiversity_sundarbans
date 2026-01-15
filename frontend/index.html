@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sundarbans Biodiversity AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./asset/favicon.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-top">SUNDARBANS</span>
+        <span class="logo-bottom green">BIODIVERSITY AI</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="simulator.html">SIMULATOR</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="hero">
+      <!-- Background Slideshow - Sundarbans/Mangrove Theme -->
+      <div class="hero-bg-slide active" style="background-image: url('https://i.pinimg.com/736x/2d/95/f6/2d95f636137f00f172881e7f46759011.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1565118531796-763e5082d113?w=1920')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://i.pinimg.com/736x/ae/df/62/aedf62d6f5af271a9baa5b655a6cb25f.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920')"></div>
+      <div class="hero-bg-slide" style="background-image: url('https://i.pinimg.com/736x/a2/ae/95/a2ae95d0323a21ae969312ae657eabfe.jpg')"></div>
+      
+      <div class="left-panel"></div>
+      <div class="right-panel"></div>
+
+      <div class="hero-overlay">
+        <div class="content-box">
+          <span class="subtitle animate-every-time"
+            >AI-Driven Conservation Intelligence</span
+          >
+          <h1 class="masked-text centered animate-every-time" id="hero-title">
+            Man<span>grove</span>
+          </h1>
+          <h2 class="outline-text left-aligned animate-every-time">Forest</h2>
+
+          <div class="description-box left-aligned animate-every-time">
+            <p class="description">
+              Scenario-based climate simulation to understand how temperature
+              and humidity shifts influence species richness.
+            </p>
+            <a href="#about" class="learn-more">EXPLORE SIMULATION</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="about" class="section">
+      <div class="about-grid">
+        <div class="about-image animate-every-time">
+          <img
+            src="https://i.pinimg.com/1200x/fa/10/21/fa1021ae58b7cad9cfe1c48f8676df04.jpg"
+            alt="Mangrove Roots"
+          />
+          <div class="cta-buttons animate-every-time">
+            <a href="simulator.html" class="btn-primary">START SIMULATING</a>
+            <a href="#faq" class="btn-secondary">LEARN MORE</a>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-title animate-every-time">Mission Intelligence</h2>
+          <p class="animate-every-time">
+            Our AI models analyze decades of ecological data to predict the
+            future of the Sundarbans. By simulating humidity and temperature
+            shifts, we empower conservationists to act before it's too late.
+          </p>
+
+          <div class="features-grid animate-every-time">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+              <h3>Data-Driven Insights</h3>
+              <p>Leverage decades of climate and biodiversity records</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-temperature-high"></i></div>
+              <h3>Climate Simulation</h3>
+              <p>Model temperature and humidity scenarios in real-time</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+              <h3>Species Prediction</h3>
+              <p>Forecast richness changes with scientific precision</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+              <h3>Risk Assessment</h3>
+              <p>Identify high-risk scenarios for targeted conservation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="faq-header animate-every-time">
+        <h2 class="section-title center">Frequently Asked Questions</h2>
+        <p class="faq-subtitle">Everything you need to know about our conservation AI</p>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-brain"></i></span>
+            How does the AI predict species richness? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Our neural networks are trained on decades of historical climate patterns and biodiversity indices. The model learns complex relationships between temperature, humidity, and species distribution to forecast shifts in local flora and fauna populations with scientific precision.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-download"></i></span>
+            Can I export simulation data? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Yes! All simulations can be exported in CSV or JSON formats, making it easy to share findings with research teams and integrate data into your conservation planning workflows.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-globe"></i></span>
+            What geographic areas does the model cover? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Currently, our model focuses on the Sundarbans mangrove ecosystem spanning Bangladesh and India. We're expanding to other critical biodiversity zones across Southeast Asia.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-chart-pie"></i></span>
+            How accurate are the predictions? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Our models achieve 85-92% accuracy on validation datasets. However, predictions represent probabilities and should be used alongside expert ecological judgment for conservation planning decisions.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-lightbulb"></i></span>
+            Can I use this for academic research? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Absolutely! Our data and models are freely available for academic and non-profit conservation research. Please cite our work and reach out for collaboration opportunities.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item animate-every-time">
+          <div class="accordion-header">
+            <span class="accordion-icon"><i class="fas fa-sync-alt"></i></span>
+            How often is the model updated? <span class="toggle">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              We update our models quarterly with the latest satellite climate data and field observations. Major model improvements are released annually with peer-reviewed validation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-top">SUNDARBANS</span>
+          <span class="logo-bottom green">BIODIVERSITY AI</span>
+          <p class="footer-tagline">AI-Powered Conservation Intelligence</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="docs.html">Documentation</a>
+            <a href="api.html">API Reference</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="#">GitHub</a>
+            <a href="contact.html">Contact</a>
+            <a href="mailto:contact@sundarbansai.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sundarbans Biodiversity AI. All rights reserved.</p>
+        <p class="footer-credit">Designed & Developed by <a href="https://yourportfolio.com" target="_blank" class="portfolio-link">Your Name</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

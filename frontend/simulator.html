@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climate Simulator | Sundarbans Biodiversity AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="simulator.css" />
+    <link rel="shortcut icon" href="./asset/favicon.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="simulator-page">
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar glass-nav">
+      <div class="logo">
+        <span class="logo-top">SUNDARBANS</span>
+        <span class="logo-bottom green">BIODIVERSITY AI</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="simulator.html" class="active">SIMULATOR</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="simulator-hero">
+      <div class="simulator-hero-content">
+        <div class="simulator-badge">
+          <i class="fas fa-microchip"></i>
+          AI-Powered Ecosystem Analysis
+        </div>
+        <h1 class="simulator-title">Climate Simulator</h1>
+        <p class="simulator-subtitle">
+          Model climate scenarios and predict their impact on biodiversity using machine learning
+        </p>
+      </div>
+      <div class="hero-glow"></div>
+    </section>
+
+    <!-- Main Simulator -->
+    <main class="simulator-main">
+      <div class="simulator-container">
+        
+        <!-- Left Panel - Parameters -->
+        <div class="glass-panel simulator-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <div class="panel-icon">
+                <i class="fas fa-sliders-h"></i>
+              </div>
+              <div>
+                <h2 class="panel-title">Simulation Parameters</h2>
+                <p class="panel-subtitle">Configure climate variables</p>
+              </div>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot"></span>
+              Ready
+            </div>
+          </div>
+
+          <!-- Parameter Tabs -->
+          <div class="param-tabs">
+            <button class="param-tab active" data-tab="current">
+              <i class="fas fa-cloud-sun"></i>
+              Current
+            </button>
+            <button class="param-tab" data-tab="lagged">
+              <i class="fas fa-history"></i>
+              Lagged
+            </button>
+            <button class="param-tab" data-tab="power">
+              <i class="fas fa-satellite"></i>
+              POWER Data
+            </button>
+          </div>
+
+          <!-- Tab: Current Climate -->
+          <div class="tab-content active" id="tab-current">
+            <div class="param-group">
+              <div class="group-header">
+                <div class="group-icon"><i class="fas fa-thermometer-half"></i></div>
+                <div>
+                  <h3 class="group-title">Current Climate Conditions</h3>
+                  <p class="group-description">Present-day environmental measurements</p>
+                </div>
+              </div>
+              
+              <div class="params-row">
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">Air Temperature</div>
+                      <div class="param-unit">Degrees Celsius (°C)</div>
+                    </div>
+                    <div class="param-value-display" id="air_temperature_value">28</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="air_temperature_track"></div>
+                    <input type="range" class="premium-slider" id="air_temperature" min="20" max="35" step="0.5" value="28" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>20°C</span>
+                    <span>35°C</span>
+                  </div>
+                </div>
+
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">Relative Humidity</div>
+                      <div class="param-unit">Percentage (%)</div>
+                    </div>
+                    <div class="param-value-display" id="humidity_value">70</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="humidity_track"></div>
+                    <input type="range" class="premium-slider" id="humidity" min="40" max="95" step="1" value="70" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>40%</span>
+                    <span>95%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Lagged Parameters -->
+          <div class="tab-content" id="tab-lagged">
+            <div class="param-group">
+              <div class="group-header">
+                <div class="group-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                  <h3 class="group-title">3-Month Lagged Values</h3>
+                  <p class="group-description">Historical climate from 3 months ago</p>
+                </div>
+              </div>
+              
+              <div class="params-row">
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">Temperature (3M Lag)</div>
+                      <div class="param-unit">Degrees Celsius (°C)</div>
+                    </div>
+                    <div class="param-value-display" id="temp_lag_3_value">27</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="temp_lag_3_track"></div>
+                    <input type="range" class="premium-slider" id="temp_lag_3" min="20" max="35" step="0.5" value="27" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>20°C</span>
+                    <span>35°C</span>
+                  </div>
+                </div>
+
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">Humidity (3M Lag)</div>
+                      <div class="param-unit">Percentage (%)</div>
+                    </div>
+                    <div class="param-value-display" id="hum_lag_3_value">72</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="hum_lag_3_track"></div>
+                    <input type="range" class="premium-slider" id="hum_lag_3" min="40" max="95" step="1" value="72" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>40%</span>
+                    <span>95%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: POWER Satellite Data -->
+          <div class="tab-content" id="tab-power">
+            <div class="param-group">
+              <div class="group-header">
+                <div class="group-icon"><i class="fas fa-satellite-dish"></i></div>
+                <div>
+                  <h3 class="group-title">NASA POWER Dataset</h3>
+                  <p class="group-description">Satellite-derived climate measurements</p>
+                </div>
+              </div>
+              
+              <div class="params-row">
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">T2M (1-Month Lag)</div>
+                      <div class="param-unit">2m Air Temperature (°C)</div>
+                    </div>
+                    <div class="param-value-display" id="T2M_lag_1_value">28</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="T2M_lag_1_track"></div>
+                    <input type="range" class="premium-slider" id="T2M_lag_1" min="20" max="35" step="0.5" value="28" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>20°C</span>
+                    <span>35°C</span>
+                  </div>
+                </div>
+
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">RH2M (1-Month Lag)</div>
+                      <div class="param-unit">2m Relative Humidity (%)</div>
+                    </div>
+                    <div class="param-value-display" id="RH2M_lag_1_value">70</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="RH2M_lag_1_track"></div>
+                    <input type="range" class="premium-slider" id="RH2M_lag_1" min="40" max="95" step="1" value="70" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>40%</span>
+                    <span>95%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="params-row" style="margin-top: 20px;">
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">T2M (3-Month Lag)</div>
+                      <div class="param-unit">2m Air Temperature (°C)</div>
+                    </div>
+                    <div class="param-value-display" id="T2M_lag_3_value">27</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="T2M_lag_3_track"></div>
+                    <input type="range" class="premium-slider" id="T2M_lag_3" min="20" max="35" step="0.5" value="27" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>20°C</span>
+                    <span>35°C</span>
+                  </div>
+                </div>
+
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">RH2M (3-Month Lag)</div>
+                      <div class="param-unit">2m Relative Humidity (%)</div>
+                    </div>
+                    <div class="param-value-display" id="RH2M_lag_3_value">72</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="RH2M_lag_3_track"></div>
+                    <input type="range" class="premium-slider" id="RH2M_lag_3" min="40" max="95" step="1" value="72" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>40%</span>
+                    <span>95%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="params-row" style="margin-top: 20px;">
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">T2M (6-Month Lag)</div>
+                      <div class="param-unit">2m Air Temperature (°C)</div>
+                    </div>
+                    <div class="param-value-display" id="T2M_lag_6_value">26</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="T2M_lag_6_track"></div>
+                    <input type="range" class="premium-slider" id="T2M_lag_6" min="20" max="35" step="0.5" value="26" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>20°C</span>
+                    <span>35°C</span>
+                  </div>
+                </div>
+
+                <div class="param-card">
+                  <div class="param-header">
+                    <div class="param-info">
+                      <div class="param-label">RH2M (6-Month Lag)</div>
+                      <div class="param-unit">2m Relative Humidity (%)</div>
+                    </div>
+                    <div class="param-value-display" id="RH2M_lag_6_value">75</div>
+                  </div>
+                  <div class="slider-container">
+                    <div class="slider-track" id="RH2M_lag_6_track"></div>
+                    <input type="range" class="premium-slider" id="RH2M_lag_6" min="40" max="95" step="1" value="75" />
+                  </div>
+                  <div class="slider-labels">
+                    <span>40%</span>
+                    <span>95%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-section">
+            <div class="action-buttons">
+              <button class="btn-premium btn-simulate" id="simulateBtn">
+                <i class="fas fa-play"></i>
+                <span>Run Simulation</span>
+                <div class="btn-glow"></div>
+              </button>
+              <button class="btn-premium btn-reset" id="resetBtn">
+                <i class="fas fa-undo"></i>
+                <span>Reset</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel - Results -->
+        <div class="glass-panel results-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <div class="panel-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h2 class="panel-title">Analysis Results</h2>
+                <p class="panel-subtitle">AI-powered predictions</p>
+              </div>
+            </div>
+            <!-- Page Indicator -->
+            <div class="page-indicator" id="page-indicator">
+              <span class="page-dot active" data-page="1"></span>
+              <span class="page-dot" data-page="2"></span>
+              <span class="page-dot" data-page="3"></span>
+            </div>
+          </div>
+
+          <!-- Initial State -->
+          <div id="initial-state" class="initial-state">
+            <div class="initial-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Ready to Simulate</h3>
+            <p>Configure your climate parameters and click "Run Simulation" to analyze the potential impact on species richness in the Sundarbans ecosystem.</p>
+          </div>
+
+          <!-- Loading State -->
+          <div id="loading" class="loading-state" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Processing Simulation</p>
+            <p>Analyzing ecosystem impact...</p>
+          </div>
+
+          <!-- Results Content with Pages -->
+          <div id="results-content" class="results-content">
+            
+            <!-- PAGE 1: Key Metrics -->
+            <div class="results-page active" id="results-page-1">
+              <div class="page-header">
+                <span class="page-badge"><i class="fas fa-chart-bar"></i> Key Metrics</span>
+                <span class="page-number">1 / 3</span>
+              </div>
+              
+              <div class="metrics-grid">
+                <div class="metric-card baseline">
+                  <div class="metric-icon"><i class="fas fa-flag"></i></div>
+                  <div class="metric-info">
+                    <p class="metric-label">Baseline Richness</p>
+                    <p class="metric-description">Reference ecosystem state</p>
+                  </div>
+                  <div class="metric-value" id="baseline-value">—</div>
+                </div>
+
+                <div class="metric-card prediction">
+                  <div class="metric-icon"><i class="fas fa-brain"></i></div>
+                  <div class="metric-info">
+                    <p class="metric-label">Predicted Richness</p>
+                    <p class="metric-description">Under simulated conditions</p>
+                  </div>
+                  <div class="metric-value" id="prediction-value">—</div>
+                </div>
+
+                <div class="metric-card delta">
+                  <div class="metric-icon"><i class="fas fa-exchange-alt"></i></div>
+                  <div class="metric-info">
+                    <p class="metric-label">Change (Δ)</p>
+                    <p class="metric-description">Difference from baseline</p>
+                  </div>
+                  <div class="metric-value" id="delta-value">—</div>
+                </div>
+              </div>
+
+              <!-- Ecosystem Health -->
+              <div class="ecosystem-viz">
+                <div class="viz-header">
+                  <h3><i class="fas fa-heartbeat"></i> Ecosystem Health Index</h3>
+                </div>
+                <div class="health-indicator">
+                  <div class="health-fill" id="health-fill" style="width: 70%;"></div>
+                </div>
+                <div class="health-labels">
+                  <span>Critical</span>
+                  <span>Stable</span>
+                  <span>Thriving</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAGE 2: Risk Assessment -->
+            <div class="results-page" id="results-page-2">
+              <div class="page-header">
+                <span class="page-badge"><i class="fas fa-shield-alt"></i> Risk Assessment</span>
+                <span class="page-number">2 / 3</span>
+              </div>
+
+              <div class="risk-gauge-container">
+                <div class="risk-gauge-header">
+                  <h3>Ecosystem Risk Assessment</h3>
+                  <p>Based on species richness change</p>
+                </div>
+                
+                <div class="risk-gauge">
+                  <div class="gauge-bg"></div>
+                  <div class="gauge-fill"></div>
+                  <div class="gauge-needle" id="gauge-needle"></div>
+                  <div class="gauge-center"></div>
+                </div>
+                <div class="gauge-labels">
+                  <span>Low Risk</span>
+                  <span>Moderate</span>
+                  <span>High Risk</span>
+                </div>
+
+                <div class="risk-level-display">
+                  <div class="risk-badge low" id="risk-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span id="risk-level">—</span>
+                  </div>
+                </div>
+                <p class="risk-message" id="risk-message">Run a simulation to see the ecosystem risk assessment.</p>
+              </div>
+            </div>
+
+            <!-- PAGE 3: Interpretation & Export -->
+            <div class="results-page" id="results-page-3">
+              <div class="page-header">
+                <span class="page-badge"><i class="fas fa-lightbulb"></i> AI Insights</span>
+                <span class="page-number">3 / 3</span>
+              </div>
+
+              <div class="interpretation-card">
+                <div class="interpretation-header">
+                  <i class="fas fa-robot"></i>
+                  <h3>AI Interpretation</h3>
+                </div>
+                <p class="interpretation-text" id="interpretation-text">
+                  Configure your simulation parameters and run the analysis to receive an AI-generated interpretation of the predicted ecosystem changes.
+                </p>
+              </div>
+
+              <!-- Conservation Tips -->
+              <div class="conservation-card">
+                <div class="conservation-header">
+                  <i class="fas fa-leaf"></i>
+                  <h3>Conservation Recommendations</h3>
+                </div>
+                <ul class="conservation-list" id="conservation-list">
+                  <li><i class="fas fa-check-circle"></i> <span>Run simulation for personalized recommendations</span></li>
+                </ul>
+              </div>
+
+              <!-- Export -->
+              <button class="btn-export" id="exportBtn">
+                <i class="fas fa-file-export"></i>
+                Export Analysis Report
+              </button>
+            </div>
+
+            <!-- Page Navigation -->
+            <div class="page-navigation">
+              <button class="page-nav-btn prev" id="prevPageBtn" disabled>
+                <i class="fas fa-chevron-left"></i>
+                <span>Previous</span>
+              </button>
+              <div class="page-progress">
+                <div class="page-progress-fill" id="page-progress-fill"></div>
+              </div>
+              <button class="page-nav-btn next" id="nextPageBtn">
+                <span>Next</span>
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Knowledge Section -->
+    <section class="tips-section">
+      <div class="tips-container">
+        <div class="section-header">
+          <h2>Understanding the Simulation</h2>
+          <p>Key concepts to help you interpret the results</p>
+        </div>
+        
+        <div class="tips-grid">
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fas fa-database"></i></div>
+            <h3>Data Sources</h3>
+            <p>Our model uses NASA POWER satellite data combined with ground-truth biodiversity observations from the Sundarbans region spanning multiple decades.</p>
+          </div>
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fas fa-clock"></i></div>
+            <h3>Lagged Variables</h3>
+            <p>Ecosystems respond to climate changes over time. Lagged variables capture the delayed effect of temperature and humidity on species populations.</p>
+          </div>
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>Risk Thresholds</h3>
+            <p><strong>High Risk:</strong> Δ ≤ -15 species<br><strong>Moderate:</strong> Δ ≤ -5 species<br><strong>Low:</strong> Δ > -5 species</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-top">SUNDARBANS</span>
+          <span class="logo-bottom green">BIODIVERSITY AI</span>
+          <p class="footer-tagline">AI-Powered Conservation Intelligence</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="index.html#faq">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="docs.html">Documentation</a>
+            <a href="api.html">API Reference</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="#">GitHub</a>
+            <a href="contact.html">Contact</a>
+            <a href="mailto:contact@sundarbansai.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sundarbans Biodiversity AI. All rights reserved.</p>
+        <p class="footer-credit">Designed & Developed by <a href="https://yourportfolio.com" target="_blank" class="portfolio-link">Your Name</a></p>
+      </div>
+    </footer>
+
+    <script src="simulator.js"></script>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Reference | Sundarbans Biodiversity AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./asset/favicon.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      .api-page { min-height: 100vh; background: var(--dark-bg); padding-top: 100px; }
+      .api-container { max-width: 1000px; margin: 0 auto; padding: 60px 5%; }
+      .api-header { margin-bottom: 60px; }
+      .api-header h1 { font-size: 48px; font-weight: 900; margin-bottom: 15px; }
+      .api-header p { font-size: 18px; opacity: 0.7; }
+      .endpoint-card { background: rgba(0,0,0,0.4); border: 1px solid rgba(87, 176, 93, 0.3); border-radius: 15px; padding: 30px; margin-bottom: 30px; }
+      .endpoint-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+      .method-badge { padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 12px; text-transform: uppercase; }
+      .method-post { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+      .method-get { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+      .endpoint-path { font-family: 'Courier New', monospace; font-size: 18px; color: white; }
+      .endpoint-desc { opacity: 0.8; margin-bottom: 25px; line-height: 1.7; }
+      .section-title { font-size: 16px; font-weight: 700; color: var(--primary-green); margin: 25px 0 15px; text-transform: uppercase; letter-spacing: 1px; }
+      .code-block { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px; font-family: 'Courier New', monospace; font-size: 13px; overflow-x: auto; margin: 15px 0; line-height: 1.6; }
+      .code-block .key { color: #f472b6; }
+      .code-block .string { color: #22c55e; }
+      .code-block .number { color: #60a5fa; }
+      .param-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+      .param-table th, .param-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+      .param-table th { color: var(--primary-green); font-weight: 600; background: rgba(0,0,0,0.3); }
+      .param-table td { opacity: 0.85; }
+      .type-badge { background: rgba(96, 165, 250, 0.2); color: #60a5fa; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-family: 'Courier New', monospace; }
+      .required { color: #ef4444; font-size: 11px; margin-left: 5px; }
+      .back-link { display: inline-flex; align-items: center; gap: 10px; color: var(--primary-green); text-decoration: none; font-weight: 600; margin-bottom: 30px; transition: 0.3s; }
+      .back-link:hover { gap: 15px; }
+      .base-url { background: rgba(87, 176, 93, 0.1); border: 1px solid rgba(87, 176, 93, 0.3); border-radius: 10px; padding: 20px; margin-bottom: 40px; }
+      .base-url code { font-family: 'Courier New', monospace; color: var(--primary-green); font-size: 16px; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-top">SUNDARBANS</span>
+        <span class="logo-bottom green">BIODIVERSITY AI</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="simulator.html">SIMULATOR</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <main class="api-page">
+      <div class="api-container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        
+        <div class="api-header">
+          <h1>API Reference</h1>
+          <p>RESTful API for biodiversity predictions and ecosystem analysis</p>
+        </div>
+
+        <div class="base-url">
+          <strong>Base URL:</strong><br>
+          <code>http://localhost:3005</code>
+        </div>
+
+        <!-- Simulate Endpoint -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge method-post">POST</span>
+            <span class="endpoint-path">/simulate</span>
+          </div>
+          <p class="endpoint-desc">Run a biodiversity simulation based on climate parameters. Returns predicted species richness, baseline comparison, and risk assessment.</p>
+          
+          <div class="section-title">Request Body</div>
+          <table class="param-table">
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>air_temperature <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>Current air temperature (20-35°C)</td>
+            </tr>
+            <tr>
+              <td>humidity <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>Relative humidity percentage (40-95%)</td>
+            </tr>
+            <tr>
+              <td>temp_lag_3 <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>Temperature from 3 months ago</td>
+            </tr>
+            <tr>
+              <td>hum_lag_3 <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>Humidity from 3 months ago</td>
+            </tr>
+            <tr>
+              <td>T2M_lag_1, T2M_lag_3, T2M_lag_6 <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>NASA POWER 2m temperature (1/3/6 month lag)</td>
+            </tr>
+            <tr>
+              <td>RH2M_lag_1, RH2M_lag_3, RH2M_lag_6 <span class="required">required</span></td>
+              <td><span class="type-badge">float</span></td>
+              <td>NASA POWER 2m humidity (1/3/6 month lag)</td>
+            </tr>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+<span class="key">POST</span> /simulate
+<span class="key">Content-Type:</span> application/json
+
+{
+  <span class="key">"air_temperature"</span>: <span class="number">28.5</span>,
+  <span class="key">"humidity"</span>: <span class="number">75</span>,
+  <span class="key">"temp_lag_3"</span>: <span class="number">27.0</span>,
+  <span class="key">"hum_lag_3"</span>: <span class="number">72</span>,
+  <span class="key">"T2M_lag_1"</span>: <span class="number">28.0</span>,
+  <span class="key">"RH2M_lag_1"</span>: <span class="number">70</span>,
+  <span class="key">"T2M_lag_3"</span>: <span class="number">27.0</span>,
+  <span class="key">"RH2M_lag_3"</span>: <span class="number">72</span>,
+  <span class="key">"T2M_lag_6"</span>: <span class="number">26.0</span>,
+  <span class="key">"RH2M_lag_6"</span>: <span class="number">75</span>
+}
+          </div>
+
+          <div class="section-title">Response</div>
+          <div class="code-block">
+{
+  <span class="key">"baseline"</span>: <span class="number">180.0</span>,
+  <span class="key">"prediction"</span>: <span class="number">165.5</span>,
+  <span class="key">"delta"</span>: <span class="number">-14.5</span>,
+  <span class="key">"risk_level"</span>: <span class="string">"Moderate Risk"</span>
+}
+          </div>
+
+          <div class="section-title">Response Fields</div>
+          <table class="param-table">
+            <tr>
+              <th>Field</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>baseline</td>
+              <td><span class="type-badge">float</span></td>
+              <td>Reference species richness value</td>
+            </tr>
+            <tr>
+              <td>prediction</td>
+              <td><span class="type-badge">float</span></td>
+              <td>Predicted species richness under given conditions</td>
+            </tr>
+            <tr>
+              <td>delta</td>
+              <td><span class="type-badge">float</span></td>
+              <td>Change from baseline (prediction - baseline)</td>
+            </tr>
+            <tr>
+              <td>risk_level</td>
+              <td><span class="type-badge">string</span></td>
+              <td>"High Risk", "Moderate Risk", or "Low Risk"</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Health Check Endpoint -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge method-get">GET</span>
+            <span class="endpoint-path">/</span>
+          </div>
+          <p class="endpoint-desc">Health check endpoint to verify API availability.</p>
+          
+          <div class="section-title">Response</div>
+          <div class="code-block">
+{
+  <span class="key">"message"</span>: <span class="string">"Sundarbans Biodiversity API"</span>
+}
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sundarbans Biodiversity AI. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Sundarbans Biodiversity AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./asset/favicon.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      .docs-page { min-height: 100vh; background: var(--dark-bg); padding-top: 100px; }
+      .docs-container { max-width: 1000px; margin: 0 auto; padding: 60px 5%; }
+      .docs-header { margin-bottom: 60px; }
+      .docs-header h1 { font-size: 48px; font-weight: 900; margin-bottom: 15px; }
+      .docs-header p { font-size: 18px; opacity: 0.7; }
+      .docs-section { margin-bottom: 50px; }
+      .docs-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; color: var(--primary-green); display: flex; align-items: center; gap: 15px; }
+      .docs-section h2 i { font-size: 24px; }
+      .docs-section h3 { font-size: 20px; font-weight: 600; margin: 25px 0 15px; }
+      .docs-section p, .docs-section li { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 15px; }
+      .docs-section ul { padding-left: 25px; }
+      .docs-section ul li { margin-bottom: 10px; }
+      .code-block { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px; font-family: 'Courier New', monospace; font-size: 14px; overflow-x: auto; margin: 20px 0; }
+      .code-block code { color: var(--primary-green); }
+      .param-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+      .param-table th, .param-table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .param-table th { color: var(--primary-green); font-weight: 600; }
+      .param-table td { opacity: 0.85; font-size: 14px; }
+      .back-link { display: inline-flex; align-items: center; gap: 10px; color: var(--primary-green); text-decoration: none; font-weight: 600; margin-bottom: 30px; transition: 0.3s; }
+      .back-link:hover { gap: 15px; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-top">SUNDARBANS</span>
+        <span class="logo-bottom green">BIODIVERSITY AI</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="simulator.html">SIMULATOR</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <main class="docs-page">
+      <div class="docs-container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        
+        <div class="docs-header">
+          <h1>Documentation</h1>
+          <p>Complete guide to using the Sundarbans Biodiversity AI platform</p>
+        </div>
+
+        <div class="docs-section">
+          <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+          <p>The Sundarbans Biodiversity AI platform helps researchers and conservationists predict species richness changes based on climate variables. Our machine learning model analyzes temperature and humidity patterns to forecast ecosystem health.</p>
+          
+          <h3>Quick Start</h3>
+          <ol>
+            <li>Navigate to the <a href="simulator.html" style="color: var(--primary-green);">Simulator</a> page</li>
+            <li>Configure climate parameters using the sliders</li>
+            <li>Click "Run Simulation" to generate predictions</li>
+            <li>Review the risk assessment and AI interpretation</li>
+            <li>Export results for further analysis</li>
+          </ol>
+        </div>
+
+        <div class="docs-section">
+          <h2><i class="fas fa-sliders-h"></i> Climate Parameters</h2>
+          <p>The simulator accepts 10 climate parameters organized into three categories:</p>
+          
+          <table class="param-table">
+            <tr>
+              <th>Parameter</th>
+              <th>Description</th>
+              <th>Range</th>
+            </tr>
+            <tr>
+              <td>Air Temperature</td>
+              <td>Current ambient temperature</td>
+              <td>20°C - 35°C</td>
+            </tr>
+            <tr>
+              <td>Relative Humidity</td>
+              <td>Current moisture percentage</td>
+              <td>40% - 95%</td>
+            </tr>
+            <tr>
+              <td>Temp Lag 3M</td>
+              <td>Temperature from 3 months ago</td>
+              <td>20°C - 35°C</td>
+            </tr>
+            <tr>
+              <td>Humidity Lag 3M</td>
+              <td>Humidity from 3 months ago</td>
+              <td>40% - 95%</td>
+            </tr>
+            <tr>
+              <td>T2M Lag 1M/3M/6M</td>
+              <td>NASA POWER 2m air temperature</td>
+              <td>20°C - 35°C</td>
+            </tr>
+            <tr>
+              <td>RH2M Lag 1M/3M/6M</td>
+              <td>NASA POWER 2m relative humidity</td>
+              <td>40% - 95%</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="docs-section">
+          <h2><i class="fas fa-chart-line"></i> Understanding Results</h2>
+          
+          <h3>Key Metrics</h3>
+          <ul>
+            <li><strong>Baseline Richness:</strong> Reference species count under normal conditions</li>
+            <li><strong>Predicted Richness:</strong> Forecasted species count based on input parameters</li>
+            <li><strong>Change (Δ):</strong> Difference between predicted and baseline values</li>
+          </ul>
+
+          <h3>Risk Levels</h3>
+          <ul>
+            <li><strong style="color: #ef4444;">High Risk (Δ ≤ -15):</strong> Severe ecosystem stress requiring immediate intervention</li>
+            <li><strong style="color: #f59e0b;">Moderate Risk (Δ ≤ -5):</strong> Notable pressure on species populations</li>
+            <li><strong style="color: #22c55e;">Low Risk (Δ > -5):</strong> Ecosystem within healthy parameters</li>
+          </ul>
+        </div>
+
+        <div class="docs-section">
+          <h2><i class="fas fa-database"></i> Data Sources</h2>
+          <p>Our model is trained on multiple data sources:</p>
+          <ul>
+            <li><strong>NASA POWER:</strong> Satellite-derived meteorological data</li>
+            <li><strong>Wildlife Observations:</strong> Field surveys from the Sundarbans region</li>
+            <li><strong>Global Mangrove Watch:</strong> Mangrove extent and change data</li>
+            <li><strong>Historical Climate Records:</strong> Multi-decadal temperature and humidity patterns</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sundarbans Biodiversity AI. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
